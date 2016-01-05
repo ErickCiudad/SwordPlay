@@ -1,0 +1,16 @@
+body{
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/White_grey_checkerboard.svg/1280px-White_grey_checkerboard.svg.png');
+    background-size: 250px;
+}
+
+#startButton{
+    background-color: rgba(0,0,0,0.55) ;
+    font: 24px sans-serif;
+    padding: 2px 4px;
+    text-decoration: none;
+    width: 80px;
+    color: white;
+    text-align: center;
+    position: relative;
+    right: -45%
+}
