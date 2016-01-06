@@ -14,3 +14,20 @@ body{
     position: relative;
     right: -45%
 }
+
+#topPlayer{
+    background-color: rgba(255,0,0,0.55);
+    width: 209px;
+    height:255px;
+    position: relative;
+    left: 478px;
+}
+
+#botPlayer{
+    background-color: rgba(0,0,255,0.55);
+
+    width: 209px;
+    height:253px;
+    position: relative;
+    left: 478px;
+}
