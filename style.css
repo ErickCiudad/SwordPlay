@@ -12,7 +12,17 @@ body{
     color: white;
     text-align: center;
     position: relative;
-    right: -45%
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#topStats{
+    background-color: rgba(255,0,0,0.55);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 800px;
 }
 
 #topPlayer{
@@ -20,14 +30,24 @@ body{
     width: 209px;
     height:255px;
     position: relative;
-    left: 478px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#botStats{
+    background-color: rgba(0,0,255,0.55);
+    height: 50px;
+    width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #botPlayer{
     background-color: rgba(0,0,255,0.55);
-
     width: 209px;
-    height:253px;
+    height:255px;
     position: relative;
-    left: 478px;
-}
+    margin-left: auto;
+    margin-right: auto;}
+
