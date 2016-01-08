@@ -19,4 +19,30 @@ var topHealth = 5;
 var botHealth = 5;
 var topStam = 5;
 var botStam = 5;
+var botStamPS = .1;
+
+
+
+function autoClick(){
+    botStam+=botStamPS;
+    document.getElementById("botStam").innerHTML= botStam.toFixed(0);
+    if (botStam >= 5) {
+        //document.getElementById("botStam").innerHTML= 5;
+        botStam = 5;
+    }
+}
+setInterval(autoClick, 100);
+//this runs 10 times per second
+
+document.getElementById("botStam").innerHTML= botStam.toFixed(0);
+
+function botAttack() {
+    if (botStam <= 1){
+        alert('out');
+        return;
+    }
+    botStam-=1;
+}
+
+//functions in global only run on load
 
