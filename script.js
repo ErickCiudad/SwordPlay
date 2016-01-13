@@ -5,14 +5,19 @@ function startGame(){
     confirm('you did it');
 }
 
-function Pic(src) {
+function botPic(src) {
     var img = document.createElement("img");
     img.src = src;
-    img.width = 600;
-    img.height = 300;
-    img.id = 'picture';
+    img.width = 210;
+    img.height = 230;
+    img.id = 'botPicture';
+
+    function replacePic() {
+        botPicture.parentNode.removeChild(botPicture)
+    }
+
 // This next line will just add it to the <body> tag
-    document.getElementById('imageBox').appendChild(img);
+    document.getElementById('botPlayer').appendChild(img);
 }
 
 var topHealth = 5;
@@ -27,18 +32,34 @@ var botStamPS = .1;
 var topStatus = 'resting';
 var botStatus = 'resting';
 
+var botImage = 1;
+
+
+function picCheck() {
+    if (botImage === 1) {
+    if (botStatus === 'resting') {
+botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');}
+        botImage-=1;
+    }
+
+}
+setInterval(picCheck, 100);
 
 function autoClick(){
     if (botStatus === 'resting'){
+
+          ///Stamina check
+
     botStam+=botStamPS;}
     Math.floor(botStam);
     document.getElementById("botStam").innerHTML= botStam.toFixed(0);
     if (botStam >= 5) {
-        //document.getElementById("botStam").innerHTML= 5;
         botStam = 5;
     }
+
     document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
     document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
+
 }
 
 setInterval(autoClick, 100);
@@ -51,9 +72,9 @@ function botAttack() {
     }
     else {
         botStatus = 'attacking';
-        setTimeout(botRest, 200);
+        setTimeout(botRest, 200); //used to be 200
         function botRest (){
-            botStatus = 'resting'
+            botStatus = 'resting';
         }
         botStam -= 1;
         topHealth -= 1;
@@ -78,3 +99,25 @@ function botAttack() {
 //functions in global only run on load
 
 //    document.getElementById("botStam").innerHTML= botStam.toFixed(0);
+function show_image(src, width, height, alt, id) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+    img.id = id;
+// This next line will just add it to the <body> tag
+    document.body.appendChild(img);
+}
+
+function delete_image() {
+    test.parentNode.removeChild(test);
+}
+
+/* if (botImage === 'FULL') {return;} else{
+ botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');}
+
+ ANGRY PICTURE
+ https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg
+
+ */
