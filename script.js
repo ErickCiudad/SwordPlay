@@ -12,13 +12,15 @@ function botPic(src) {
     img.height = 230;
     img.id = 'botPicture';
 
-    function replacePic() {
-        botPicture.parentNode.removeChild(botPicture)
-    }
-
 // This next line will just add it to the <body> tag
     document.getElementById('botPlayer').appendChild(img);
 }
+
+function botReplacePic() {
+    botPicture.parentNode.removeChild(botPicture)
+}
+
+
 
 var topHealth = 5;
 var botHealth = 5;
@@ -38,10 +40,13 @@ var botImage = 1;
 function picCheck() {
     if (botImage === 1) {
     if (botStatus === 'resting') {
-botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');}
+botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
+        botImage-=1;}
+    if (botStatus === 'attacking') {
+        botPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg');
         botImage-=1;
     }
-
+    }
 }
 setInterval(picCheck, 100);
 
@@ -59,7 +64,6 @@ function autoClick(){
 
     document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
     document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
-
 }
 
 setInterval(autoClick, 100);
@@ -72,9 +76,13 @@ function botAttack() {
     }
     else {
         botStatus = 'attacking';
-        setTimeout(botRest, 200); //used to be 200
+        botReplacePic();/////HERE
+        botImage++;
+        setTimeout(botRest, 200);
         function botRest (){
+            botReplacePic();/////HERE
             botStatus = 'resting';
+            botImage++;
         }
         botStam -= 1;
         topHealth -= 1;
@@ -98,17 +106,6 @@ function botAttack() {
 
 //functions in global only run on load
 
-//    document.getElementById("botStam").innerHTML= botStam.toFixed(0);
-function show_image(src, width, height, alt, id) {
-    var img = document.createElement("img");
-    img.src = src;
-    img.width = width;
-    img.height = height;
-    img.alt = alt;
-    img.id = id;
-// This next line will just add it to the <body> tag
-    document.body.appendChild(img);
-}
 
 function delete_image() {
     test.parentNode.removeChild(test);
