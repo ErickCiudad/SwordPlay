@@ -26,7 +26,7 @@ var topHealth = 5;
 var botHealth = 5;
 
 var topStam = 5;
-var topStamPS = 5;
+var topStamPS = .1;
 
 var botStam = 5;
 var botStamPS = .1;
@@ -34,58 +34,65 @@ var botStamPS = .1;
 var topStatus = 'resting';
 var botStatus = 'resting';
 
-var botImage = 1;
 
-
-function picCheck() {
-    if (botImage === 1) {
-    if (botStatus === 'resting') {
 botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
-        botImage-=1;}
-    if (botStatus === 'attacking') {
-        botPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg');
-        botImage-=1;
-    }
-    }
-}
-setInterval(picCheck, 100);
+
+
 
 function autoClick(){
+
     if (botStatus === 'resting'){
 
           ///Stamina check
 
     botStam+=botStamPS;}
-    Math.floor(botStam);
     document.getElementById("botStam").innerHTML= botStam.toFixed(0);
     if (botStam >= 5) {
         botStam = 5;
     }
 
+
+
     document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
     document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
+
 }
 
 setInterval(autoClick, 100);
 //this runs 10 times per second
 
 
+
+
 function botAttack() {
-    if (botStam <= 0){
-        alert('out');
+    if (botStam < 1){
+
+    }
+    else if (botStatus === 'attacking') {
+
     }
     else {
         botStatus = 'attacking';
-        botReplacePic();/////HERE
-        botImage++;
-        setTimeout(botRest, 200);
-        function botRest (){
-            botReplacePic();/////HERE
-            botStatus = 'resting';
-            botImage++;
-        }
+        botReplacePic();
+        setTimeout(botPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
+
+        setTimeout(botRest, 350);
+        //launched attack
         botStam -= 1;
-        topHealth -= 1;
+        if (topStatus === 'resting'){
+        topHealth -= 1;}
+        //if he's chilling, hurt him
+        if (topStatus === 'blocking'){
+            botStam--;
+            //if he's blocking, hurt stamina
+            if (botStam < 1) {
+                topStatus = 'stunned';
+                alert('top player stunned')
+            }
+            //and if this stamina taken away, stun him
+
+        }
+
         if (topHealth <= 0) {
             setTimeout(topDied, 100);
             function topDied() {
@@ -97,24 +104,147 @@ function botAttack() {
     }
 }
 
+function botBlock(){
+
+    if (botStam < 0){
+        return;
+    }
+        botReplacePic();
+        setTimeout(botPic('http://thumb7.shutterstock.com/display_pic_with_logo/92657/92657,1251642732,11/stock-photo-man-trying-to-protect-himself-with-his-arms-36161041.jpg'), 100)
+        botStam -= 0.20;
+}
+
+
+
+function botRest (){
+    botStatus = 'resting';
+    botReplacePic();
+    botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
+}
+
+    document.onkeydown = checkKey;
+
+function checkKey(e, b, u) {
+
+    e = e || window.event;
+    b = b || window.event;
+    if (e.keyCode == '38') {
+        // up arrow
+        botAttack();
+    }
+    else if (b.keyCode == '40') {
+        // down arrow
+        botBlock();
+    }
+
+
+
+    else if (u.keyCode == '37') {
+        botRest();
+        // left arrow
+    }
+    else if (e.keyCode == '39') {
+        // right arrow
+    }
+
+}
+
+function checkKeyUp(u){
+    u = u || window.event;
+    if (u.keyCode == '40') {
+        // down arrow released
+        alert('unblock');
+        botRest();
+    }
+}
+///////////////////////////////
+
+function topPic(src) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = 210;
+    img.height = 230;
+    img.id = 'topPicture';
+
+// This next line will just add it to the <body> tag
+    document.getElementById('topPlayer').appendChild(img);
+}
+
+function topReplacePic() {
+    topPicture.parentNode.removeChild(topPicture)
+}
+
+function TopAttack() {
+    if (topStam < 1){
+
+    }
+    else if (topStatus === 'attacking') {
+
+    }
+    else {
+        topStatus = 'attacking';
+        topReplacePic();
+        setTimeout(topPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
+
+        setTimeout(topRest, 350);
+        //launched attack
+        topStam -= 1;
+        if (botStatus === 'resting'){
+            botHealth -= 1;}
+        //if he's chilling, hurt him
+        if (botStatus === 'blocking'){
+            topStam--;
+            //if he's blocking, hurt stamina
+            if (topStam < 1) {
+                botStatus = 'stunned';
+                alert('top player stunned')
+            }
+            //and if this stamina taken away, stun him
+
+        }
+
+        if (botHealth <= 0) {
+            setTimeout(botDied, 100);
+            function botDied() {
+                alert('bot player died');
+                topHealth = 5;
+                botStam = 5;
+            }
+        }
+    }
+}
+
+
+
 /*attack doesn't run if stamina is empty
 * if your attacking, you're status is set and stamina recovery is stopped
 * if you have attacked, you lose one stamina point and your enemy loses one health point.
 * if your attack made a kill, it states it and restarts the game.
 * */
 
+/*function botTired(){
+ if (botStam <= 0) {
+ botReplacePic();
+ setTimeout(botPic('http://www.bioathletic.com.au/wp-content/uploads/2013/03/rec-exhausted-athlete-09-28-11-B2UFA9-md.jpg'), 100);
+ }
+ if (botStam >= 1) {
+ botRest();
+ }
+ }*/
 
 //functions in global only run on load
+//Resting // http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg
 
 
-function delete_image() {
-    test.parentNode.removeChild(test);
-}
+/*
+*make a topstam p tag in   html
+*   if (topStatus === 'resting'){
 
-/* if (botImage === 'FULL') {return;} else{
- botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');}
+ ///Stamina check
 
- ANGRY PICTURE
- https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg
-
- */
+ topStam+=topStamPS;}
+ document.getElementById("topStam").innerHTML= topStam.toFixed(0);
+ if (topStam >= 5) {
+ topStam = 5;
+ }
+* */
