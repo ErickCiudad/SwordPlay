@@ -7,15 +7,16 @@
 </head>
 <body>
     <div id="topStats">
-        <p id="topHealth"></p>
+        <p id="topStam" style="margin-right: 500px; color: black; position:relative; bottom:-14px;"></p>
+        <p id="topHealth" style="margin-left:500px; position:relative; bottom:20px"></p>
     </div>
     <br>
-    <div id="topPlayer">
+    <div id="topPlayer" onkeypress="checkKey(te)">
     </div>
 
     <p id="startButton" onclick="startGame()">Start</p>
 
-    <div id="botPlayer" onkeypress="checkKey(e)" onkeydown="checkKey(b)" onkeyup="checkKeyUp(u)">
+    <div id="botPlayer" onkeypress="checkKey(e)" onkeydown="checkKey(b)" onkeyup="checkKeyUp(ub)">
         <br>
     </div>
     <br>

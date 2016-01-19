@@ -46,12 +46,19 @@ function autoClick(){
           ///Stamina check
 
     botStam+=botStamPS;}
+
     document.getElementById("botStam").innerHTML= botStam.toFixed(0);
     if (botStam >= 5) {
         botStam = 5;
     }
 
+    if (topStatus === 'resting'){
 
+    topStam+=topStamPS;}
+document.getElementById("topStam").innerHTML= topStam.toFixed(0);
+if (topStam >= 5) {
+    topStam = 5;
+}
 
     document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
     document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
@@ -98,6 +105,8 @@ function botAttack() {
             function topDied() {
                 alert('top player died');
                 topHealth = 5;
+                botHealth = 5;
+                topStam = 5;
                 botStam = 5;
             }
         }
@@ -124,10 +133,12 @@ function botRest (){
 
     document.onkeydown = checkKey;
 
-function checkKey(e, b, u) {
+function checkKey(e, b, u, te) {
 
     e = e || window.event;
     b = b || window.event;
+    u = u || window.event;
+    te = te || window.event;
     if (e.keyCode == '38') {
         // up arrow
         botAttack();
@@ -137,8 +148,6 @@ function checkKey(e, b, u) {
         botBlock();
     }
 
-
-
     else if (u.keyCode == '37') {
         botRest();
         // left arrow
@@ -147,18 +156,24 @@ function checkKey(e, b, u) {
         // right arrow
     }
 
+    else if (te.keyCode == '87') {
+    topAttack();
+    }
+
+
 }
 
-function checkKeyUp(u){
-    u = u || window.event;
-    if (u.keyCode == '40') {
+function checkKeyUp(ub){
+    ub = ub || window.event;
+    if (ub.keyCode == '40') {
         // down arrow released
         alert('unblock');
         botRest();
     }
 }
 ///////////////////////////////
-
+//TOP PLAYER BEGINS//
+///////////////////////////////
 function topPic(src) {
     var img = document.createElement("img");
     img.src = src;
@@ -174,7 +189,9 @@ function topReplacePic() {
     topPicture.parentNode.removeChild(topPicture)
 }
 
-function TopAttack() {
+topPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
+
+function topAttack() {
     if (topStam < 1){
 
     }
@@ -192,12 +209,12 @@ function TopAttack() {
         if (botStatus === 'resting'){
             botHealth -= 1;}
         //if he's chilling, hurt him
-        if (botStatus === 'blocking'){
-            topStam--;
+        else if (botStatus === 'blocking'){
+            botStam--;
             //if he's blocking, hurt stamina
-            if (topStam < 1) {
+            if (botStam < 1) {
                 botStatus = 'stunned';
-                alert('top player stunned')
+                alert('bot player stunned')
             }
             //and if this stamina taken away, stun him
 
@@ -208,6 +225,8 @@ function TopAttack() {
             function botDied() {
                 alert('bot player died');
                 topHealth = 5;
+                botHealth = 5;
+                topStam = 5;
                 botStam = 5;
             }
         }
@@ -215,7 +234,21 @@ function TopAttack() {
 }
 
 
+function topRest (){
+    topStatus = 'resting';
+    topReplacePic();
+    topPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
+}
 
+function topBlock(){
+
+    if (topStam < 0){
+        return;
+    }
+    topReplacePic();
+    setTimeout(topPic('http://thumb7.shutterstock.com/display_pic_with_logo/92657/92657,1251642732,11/stock-photo-man-trying-to-protect-himself-with-his-arms-36161041.jpg'), 100)
+    topStam -= 0.20;
+}
 /*attack doesn't run if stamina is empty
 * if your attacking, you're status is set and stamina recovery is stopped
 * if you have attacked, you lose one stamina point and your enemy loses one health point.
@@ -236,15 +269,3 @@ function TopAttack() {
 //Resting // http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg
 
 
-/*
-*make a topstam p tag in   html
-*   if (topStatus === 'resting'){
-
- ///Stamina check
-
- topStam+=topStamPS;}
- document.getElementById("topStam").innerHTML= topStam.toFixed(0);
- if (topStam >= 5) {
- topStam = 5;
- }
-* */
