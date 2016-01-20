@@ -26,10 +26,10 @@ var topHealth = 5;
 var botHealth = 5;
 
 var topStam = 5;
-var topStamPS = .1;
+var topStamPS = .2;
 
 var botStam = 5;
-var botStamPS = .1;
+var botStamPS = .2;
 
 var topStatus = 'resting';
 var botStatus = 'resting';
@@ -87,10 +87,13 @@ function botAttack() {
         //launched attack
         botStam -= 1;
         if (topStatus === 'resting'){
-        topHealth -= 1;}
+        topHealth -= 1;
+        topReplacePic();
+        setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),200);
+        setTimeout(topRest,400);}
         //if he's chilling, hurt him
         if (topStatus === 'blocking'){
-            botStam--;
+            topStam--;
             //if he's blocking, hurt stamina
             if (botStam < 1) {
                 topStatus = 'stunned';
@@ -118,9 +121,9 @@ function botBlock(){
     if (botStam < 0){
         return;
     }
+    botStatus = 'blocking';
         botReplacePic();
         setTimeout(botPic('http://thumb7.shutterstock.com/display_pic_with_logo/92657/92657,1251642732,11/stock-photo-man-trying-to-protect-himself-with-his-arms-36161041.jpg'), 100)
-        botStam -= 0.20;
 }
 
 
@@ -133,12 +136,14 @@ function botRest (){
 
     document.onkeydown = checkKey;
 
-function checkKey(e, b, u, te) {
+function checkKey(e, b, u, te, tb, tu) {
 
     e = e || window.event;
     b = b || window.event;
     u = u || window.event;
     te = te || window.event;
+    tb = tb || window.event;
+    tu = tu || window.event;
     if (e.keyCode == '38') {
         // up arrow
         botAttack();
@@ -158,6 +163,14 @@ function checkKey(e, b, u, te) {
 
     else if (te.keyCode == '87') {
     topAttack();
+    }
+
+    else if (tb.keyCode == '83') {
+        topBlock();
+    }
+
+    else if (tu.keyCode == '65') {
+        topRest();
     }
 
 
@@ -207,7 +220,10 @@ function topAttack() {
         //launched attack
         topStam -= 1;
         if (botStatus === 'resting'){
-            botHealth -= 1;}
+            botHealth -= 1;
+            botReplacePic();
+            setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),200);
+            setTimeout(botRest,400);}
         //if he's chilling, hurt him
         else if (botStatus === 'blocking'){
             botStam--;
@@ -245,9 +261,9 @@ function topBlock(){
     if (topStam < 0){
         return;
     }
+    topStatus = 'blocking';
     topReplacePic();
     setTimeout(topPic('http://thumb7.shutterstock.com/display_pic_with_logo/92657/92657,1251642732,11/stock-photo-man-trying-to-protect-himself-with-his-arms-36161041.jpg'), 100)
-    topStam -= 0.20;
 }
 /*attack doesn't run if stamina is empty
 * if your attacking, you're status is set and stamina recovery is stopped
@@ -267,5 +283,9 @@ function topBlock(){
 
 //functions in global only run on load
 //Resting // http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg
+//Pain   //    http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg
 
-
+/*function checkStatus () {
+    console.log(botStatus)
+}
+setInterval(checkStatus, 100)*/
