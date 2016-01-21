@@ -6,6 +6,7 @@
     <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+    <div id="game">
     <div id="topStats">
         <p id="topStam" style="margin-right: 500px; color: black; position:relative; bottom:-14px;"></p>
         <p id="topHealth" style="margin-left:500px; position:relative; bottom:20px"></p>
@@ -14,7 +15,7 @@
     <div id="topPlayer" onkeypress="checkKey(te)" onkeydown="checkKey(tb)">
     </div>
 
-    <p id="startButton" onclick="startGame()">Start</p>
+    <p id="howToPlay" onclick="daRules()">How to Play</p>
 
     <div id="botPlayer" onkeypress="checkKey(e)" onkeydown="checkKey(b)" onkeyup="checkKeyUp(ub)">
         <br>
@@ -25,5 +26,19 @@
         <p id="botHealth" style="margin-left: 500px; position:relative; bottom:48px; color: white"></p>
     </div>
     <script type="text/javascript" src="script.js"></script>
+    </div>
+    <div id="rules">
+        <p>&#9650; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Attack &nbsp;&nbsp;&nbsp;&nbsp; W</p>
+        <p> &#9668; &nbsp; Unblock/Evade &nbsp; A </p>
+        <p>&#9660; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Block &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  S</p>
+        <p>&#9658; &nbsp; Power Attack &nbsp; &nbsp; D</p>
+        <br><br><br>
+        <p id="backToGame" onclick="daGame()">Play</p>
+        <p>Regular attacks use 1 stamina.</p>
+        <p>If they connect unguarded, they deal 1 damage.</p>
+        <p>Power attacks use 3 stamina, and deal 3 damage.</p>
+        <p>If a hit connects and is blocked, the damage is dealt to stamina instead</p>
+        <p>if an attack is blocked while you have no stamina, you become stunned for 3 seconds</p>
+    </div>
 </body>
 </html>

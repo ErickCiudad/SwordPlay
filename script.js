@@ -1,8 +1,13 @@
 /**
  * Created by Erick on 12/27/2015.
  */
-function startGame(){
-    confirm('you did it');
+function daRules(){
+    document.getElementById('game').style.display = 'none';
+    document.getElementById('rules').style.display = 'block';
+}
+function daGame(){
+    document.getElementById('game').style.display = 'block';
+    document.getElementById('rules').style.display = 'none';
 }
 
 function botPic(src) {
@@ -83,19 +88,19 @@ function botAttack() {
         botReplacePic();
         setTimeout(botPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
 
-        setTimeout(botRest, 350);
+        setTimeout(botRest, 600);//ATTACK RATE
         //launched attack
         botStam -= 1;
         if (topStatus === 'resting'){
         topHealth -= 1;
         topReplacePic();
-        setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),200);
-        setTimeout(topRest,400);}
+        setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+        setTimeout(topRest,600);}
         //if he's chilling, hurt him
         if (topStatus === 'blocking'){
             topStam--;
             //if he's blocking, hurt stamina
-            if (botStam < 1) {
+            if (topStam < 1) {
                 topStatus = 'stunned';
                 alert('top player stunned')
             }
@@ -216,14 +221,14 @@ function topAttack() {
         topReplacePic();
         setTimeout(topPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
 
-        setTimeout(topRest, 350);
+        setTimeout(topRest, 600);//ATTACK RATE
         //launched attack
         topStam -= 1;
         if (botStatus === 'resting'){
             botHealth -= 1;
             botReplacePic();
-            setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),200);
-            setTimeout(botRest,400);}
+            setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(botRest,600);}
         //if he's chilling, hurt him
         else if (botStatus === 'blocking'){
             botStam--;
