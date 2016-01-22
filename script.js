@@ -27,8 +27,8 @@ function botReplacePic() {
 
 
 
-var topHealth = 5;
-var botHealth = 5;
+var topHealth = 10;
+var botHealth = 10;
 
 var topStam = 5;
 var topStamPS = .2;
@@ -88,21 +88,20 @@ function botAttack() {
         botReplacePic();
         setTimeout(botPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
 
-        setTimeout(botRest, 600);//ATTACK RATE
+        setTimeout(botRest, 500);//ATTACK RATE
         //launched attack
         botStam -= 1;
         if (topStatus === 'resting'){
         topHealth -= 1;
         topReplacePic();
         setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
-        setTimeout(topRest,600);}
+        setTimeout(topRest,500);}
         //if he's chilling, hurt him
         if (topStatus === 'blocking'){
             topStam--;
             //if he's blocking, hurt stamina
             if (topStam < 1) {
-                topStatus = 'stunned';
-                alert('top player stunned')
+                topStun();
             }
             //and if this stamina taken away, stun him
 
@@ -112,8 +111,8 @@ function botAttack() {
             setTimeout(topDied, 100);
             function topDied() {
                 alert('top player died');
-                topHealth = 5;
-                botHealth = 5;
+                topHealth = 10;
+                botHealth = 10;
                 topStam = 5;
                 botStam = 5;
             }
@@ -139,6 +138,13 @@ function botRest (){
     botPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
 }
 
+function botStun () {
+    botStatus = 'stunned';
+    botStam = 0;
+    botReplacePic();
+    setTimeout(botPic('https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png'),100);
+    setTimeout(botRest, 3000);
+}
     document.onkeydown = checkKey;
 
 function checkKey(e, b, u, te, tb, tu) {
@@ -221,21 +227,20 @@ function topAttack() {
         topReplacePic();
         setTimeout(topPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
 
-        setTimeout(topRest, 600);//ATTACK RATE
+        setTimeout(topRest, 500);//ATTACK RATE
         //launched attack
         topStam -= 1;
         if (botStatus === 'resting'){
             botHealth -= 1;
             botReplacePic();
             setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
-            setTimeout(botRest,600);}
+            setTimeout(botRest,500);}
         //if he's chilling, hurt him
         else if (botStatus === 'blocking'){
             botStam--;
             //if he's blocking, hurt stamina
             if (botStam < 1) {
-                botStatus = 'stunned';
-                alert('bot player stunned')
+                botStun();
             }
             //and if this stamina taken away, stun him
 
@@ -245,8 +250,8 @@ function topAttack() {
             setTimeout(botDied, 100);
             function botDied() {
                 alert('bot player died');
-                topHealth = 5;
-                botHealth = 5;
+                topHealth = 10;
+                botHealth = 10;
                 topStam = 5;
                 botStam = 5;
             }
@@ -259,6 +264,14 @@ function topRest (){
     topStatus = 'resting';
     topReplacePic();
     topPic('http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg');
+}
+
+function topStun () {
+    topStatus = 'stunned';
+    topStam = 0;
+    topReplacePic();
+    setTimeout(topPic('https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png'),100);
+    setTimeout(topRest, 3000);
 }
 
 function topBlock(){
@@ -289,6 +302,7 @@ function topBlock(){
 //functions in global only run on load
 //Resting // http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg
 //Pain   //    http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg
+//Stunned// https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png
 
 /*function checkStatus () {
     console.log(botStatus)
