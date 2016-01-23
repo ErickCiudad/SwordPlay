@@ -96,6 +96,13 @@ function botAttack() {
         topReplacePic();
         setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
         setTimeout(topRest,500);}
+
+        if (topStatus === 'stunned'){
+            topHealth -= 2;
+            //Critical Hit
+            topReplacePic();
+            setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(topRest,500);}
         //if he's chilling, hurt him
         if (topStatus === 'blocking'){
             topStam--;
@@ -130,7 +137,71 @@ function botBlock(){
         setTimeout(botPic('http://thumb7.shutterstock.com/display_pic_with_logo/92657/92657,1251642732,11/stock-photo-man-trying-to-protect-himself-with-his-arms-36161041.jpg'), 100)
 }
 
+function botChargedUp (){
+    if (botStatus === 'charged'){
+        return;
+    }
+    if (botStam < 3) {
+        return;
+    }
+    botStatus = 'charged';
+    botReplacePic();
+    setTimeout(botPic('http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg'),100);
+    //Charged up
+    setTimeout(botPowerAttack, 800);
+}
 
+function botPowerAttack() {
+    if (botStatus === 'attacking') {
+
+    }
+    else {
+        botStatus = 'attacking';
+        botReplacePic();
+        setTimeout(botPic('http://mylifebook.com/blog/wp-content/uploads/2011/04/putting-the-power-behind-the-punch.jpg'),100);
+
+        setTimeout(botRest, 500);//ATTACK RATE
+        //launched attack
+        botStam -= 3;
+        if (topStatus === 'resting'){
+            topHealth -= 3;
+            topReplacePic();
+            setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(topRest,500);}
+
+        if (topStatus === 'stunned'){
+            topHealth -= 6;
+            //Critical Hit
+            topReplacePic();
+            setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(topRest,500);}
+
+        if (topStatus = 'charged'){
+            
+        }
+        //if he's chilling, hurt him
+        if (topStatus === 'blocking'){
+            topStam-=3;
+            //if he's blocking, hurt stamina
+            if (topStam < 1) {
+                topStun();
+            }
+            //and if this stamina taken away, stun him
+
+        }
+
+        if (topHealth <= 0) {
+            setTimeout(topDied, 100);
+            function topDied() {
+                alert('top player died');
+                topHealth = 10;
+                botHealth = 10;
+                topStam = 5;
+                botStam = 5;
+            }
+        }
+    }
+}
 
 function botRest (){
     botStatus = 'resting';
@@ -147,11 +218,12 @@ function botStun () {
 }
     document.onkeydown = checkKey;
 
-function checkKey(e, b, u, te, tb, tu) {
+function checkKey(e, b, u, te, tb, tu, p) {
 
     e = e || window.event;
     b = b || window.event;
     u = u || window.event;
+    p = p || window.event;
     te = te || window.event;
     tb = tb || window.event;
     tu = tu || window.event;
@@ -168,20 +240,24 @@ function checkKey(e, b, u, te, tb, tu) {
         botRest();
         // left arrow
     }
-    else if (e.keyCode == '39') {
-        // right arrow
+    else if (p.keyCode == '39') {
+        botChargedUp();
+        //right arrow
     }
 
     else if (te.keyCode == '87') {
     topAttack();
+        //W
     }
 
     else if (tb.keyCode == '83') {
         topBlock();
+        //S
     }
 
     else if (tu.keyCode == '65') {
         topRest();
+        //A
     }
 
 
@@ -303,6 +379,7 @@ function topBlock(){
 //Resting // http://delicioushealing.com/wp-content/uploads/2012/11/Young-man-Resting.jpg
 //Pain   //    http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg
 //Stunned// https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png
+//Charged Up// http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg
 
 /*function checkStatus () {
     console.log(botStatus)
