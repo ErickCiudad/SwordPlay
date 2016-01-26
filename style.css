@@ -61,7 +61,10 @@ body{
     color:white;
     font: 24px sans-serif;
     padding: 2px 4px;
+    position: relative;
+    bottom: -10px;
     text-align: center;
+
 }
 
 #backToGame{

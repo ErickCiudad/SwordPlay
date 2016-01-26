@@ -88,7 +88,6 @@ function botAttack() {
         botReplacePic();
         setTimeout(botPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
 
-        setTimeout(botRest, 500);//ATTACK RATE
         //launched attack
         botStam -= 1;
         if (topStatus === 'resting'){
@@ -112,6 +111,14 @@ function botAttack() {
             }
             //and if this stamina taken away, stun him
 
+        }
+
+        if (topStatus === 'parrying') {
+            botStun();
+        }
+
+        if (botStatus === 'attacking') {
+            setTimeout(botRest, 500);//ATTACK RATE
         }
 
         if (topHealth <= 0) {
@@ -160,7 +167,6 @@ function botPowerAttack() {
         botReplacePic();
         setTimeout(botPic('http://mylifebook.com/blog/wp-content/uploads/2011/04/putting-the-power-behind-the-punch.jpg'),100);
 
-        setTimeout(botRest, 500);//ATTACK RATE
         //launched attack
         botStam -= 3;
         if (topStatus === 'resting'){
@@ -176,9 +182,7 @@ function botPowerAttack() {
             setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
             setTimeout(topRest,500);}
 
-        if (topStatus = 'charged'){
-            
-        }
+
         //if he's chilling, hurt him
         if (topStatus === 'blocking'){
             topStam-=3;
@@ -188,6 +192,14 @@ function botPowerAttack() {
             }
             //and if this stamina taken away, stun him
 
+        }
+
+        if (topStatus === 'parrying') {
+            botStun();
+        }
+
+        if (botStatus === 'attacking') {
+            setTimeout(botRest, 500);//ATTACK RATE
         }
 
         if (topHealth <= 0) {
@@ -200,6 +212,23 @@ function botPowerAttack() {
                 botStam = 5;
             }
         }
+    }
+}
+
+function botParry() {
+    if (botStatus === 'parrying') {
+
+    }
+    if (botStam < 2) {
+
+    }
+    else {
+        botStatus = 'parrying';
+        botReplacePic();
+        setTimeout(botPic('http://vignette1.wikia.nocookie.net/marvelcinematicuniverse/images/a/ac/CAShieldvsMjonir-TheAvengers.png/revision/latest?cb=20141020151051'), 100);
+        setTimeout(botRest, 300);//REST RATE
+        botStam -= 2;
+
     }
 }
 
@@ -218,7 +247,7 @@ function botStun () {
 }
     document.onkeydown = checkKey;
 
-function checkKey(e, b, u, te, tb, tu, p) {
+function checkKey(e, b, u, te, tb, tu, p, tp, tc) {
 
     e = e || window.event;
     b = b || window.event;
@@ -227,6 +256,8 @@ function checkKey(e, b, u, te, tb, tu, p) {
     te = te || window.event;
     tb = tb || window.event;
     tu = tu || window.event;
+    tp = tp || window.event;
+
     if (e.keyCode == '38') {
         // up arrow
         botAttack();
@@ -237,7 +268,7 @@ function checkKey(e, b, u, te, tb, tu, p) {
     }
 
     else if (u.keyCode == '37') {
-        botRest();
+        botParry();
         // left arrow
     }
     else if (p.keyCode == '39') {
@@ -256,8 +287,13 @@ function checkKey(e, b, u, te, tb, tu, p) {
     }
 
     else if (tu.keyCode == '65') {
-        topRest();
+        topParry();
         //A
+    }
+
+    else if (tp.keyCode == '68') {
+        topChargedUp();
+        //D
     }
 
 
@@ -303,7 +339,6 @@ function topAttack() {
         topReplacePic();
         setTimeout(topPic('https://www.thetwozen.com/wp-content/uploads/2015/10/angry-hugh-jackman.jpg'),100);
 
-        setTimeout(topRest, 500);//ATTACK RATE
         //launched attack
         topStam -= 1;
         if (botStatus === 'resting'){
@@ -311,6 +346,14 @@ function topAttack() {
             botReplacePic();
             setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
             setTimeout(botRest,500);}
+
+        if (botStatus === 'stunned'){
+            botHealth -= 2;
+            //Critical Hit
+            botReplacePic();
+            setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(botRest,500);}
+
         //if he's chilling, hurt him
         else if (botStatus === 'blocking'){
             botStam--;
@@ -320,6 +363,14 @@ function topAttack() {
             }
             //and if this stamina taken away, stun him
 
+        }
+
+        if (botStatus === 'parrying') {
+            topStun();
+        }
+
+        if (topStatus === 'attacking') {
+            setTimeout(topRest, 500);//ATTACK RATE
         }
 
         if (botHealth <= 0) {
@@ -335,6 +386,93 @@ function topAttack() {
     }
 }
 
+function topChargedUp (){
+    if (topStatus === 'charged'){
+        return;
+    }
+    if (topStam < 3) {
+        return;
+    }
+    topStatus = 'charged';
+    topReplacePic();
+    setTimeout(topPic('http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg'),100);
+    //Charged up
+    setTimeout(topPowerAttack, 800);
+}
+
+function topPowerAttack() {
+    if (topStatus === 'attacking') {
+
+    }
+    else {
+        topStatus = 'attacking';
+        topReplacePic();
+        setTimeout(topPic('http://mylifebook.com/blog/wp-content/uploads/2011/04/putting-the-power-behind-the-punch.jpg'),100);
+
+        //launched attack
+        topStam -= 3;
+        if (botStatus === 'resting'){
+            botHealth -= 3;
+            botReplacePic();
+            setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(botRest,500);}
+
+        if (botStatus === 'stunned'){
+            botHealth -= 6;
+            //Critical Hit
+            botReplacePic();
+            setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
+            setTimeout(botRest,500);}
+
+
+        //if he's chilling, hurt him
+        if (botStatus === 'blocking'){
+            botStam-=3;
+            //if he's blocking, hurt stamina
+            if (botStam < 1) {
+                botStun();
+            }
+            //and if this stamina taken away, stun him
+
+        }
+
+        if (botStatus === 'parrying') {
+            topStun();
+        }
+
+        if (topStatus === 'attacking') {
+            setTimeout(topRest, 500);//ATTACK RATE
+        }
+
+        if (botHealth <= 0) {
+            setTimeout(botDied, 100);
+            function botDied() {
+                alert('top player died');
+                topHealth = 10;
+                botHealth = 10;
+                topStam = 5;
+                botStam = 5;
+            }
+        }
+    }
+}
+
+function topParry() {
+    if (topStatus === 'parrying') {
+
+    }
+    if (topStam < 2) {
+
+    }
+    else {
+        topStatus = 'parrying';
+        topReplacePic();
+        setTimeout(topPic('http://vignette1.wikia.nocookie.net/marvelcinematicuniverse/images/a/ac/CAShieldvsMjonir-TheAvengers.png/revision/latest?cb=20141020151051'), 100);
+        setTimeout(topRest, 300);//REST RATE
+        topStam -= 2;
+
+    }
+}
 
 function topRest (){
     topStatus = 'resting';
@@ -380,6 +518,8 @@ function topBlock(){
 //Pain   //    http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg
 //Stunned// https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png
 //Charged Up// http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg
+
+//Parry// http://vignette1.wikia.nocookie.net/marvelcinematicuniverse/images/a/ac/CAShieldvsMjonir-TheAvengers.png/revision/latest?cb=20141020151051
 
 /*function checkStatus () {
     console.log(botStatus)
