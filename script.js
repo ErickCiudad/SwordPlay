@@ -447,7 +447,7 @@ function topPowerAttack() {
         if (botHealth <= 0) {
             setTimeout(botDied, 100);
             function botDied() {
-                alert('top player died');
+                alert('bot player died');
                 topHealth = 10;
                 botHealth = 10;
                 topStam = 5;
