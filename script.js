@@ -176,7 +176,7 @@ function botPowerAttack() {
             setTimeout(topRest,500);}
 
         if (topStatus === 'stunned'){
-            topHealth -= 6;
+            topHealth -= 4;
             //Critical Hit
             topReplacePic();
             setTimeout(topPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
@@ -243,7 +243,7 @@ function botStun () {
     botStam = 0;
     botReplacePic();
     setTimeout(botPic('https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png'),100);
-    setTimeout(botRest, 3000);
+    setTimeout(botRest, 2000);
 }
     document.onkeydown = checkKey;
 
@@ -418,7 +418,7 @@ function topPowerAttack() {
             setTimeout(botRest,500);}
 
         if (botStatus === 'stunned'){
-            botHealth -= 6;
+            botHealth -= 4;
             //Critical Hit
             botReplacePic();
             setTimeout(botPic(' http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg'),100);
@@ -485,7 +485,7 @@ function topStun () {
     topStam = 0;
     topReplacePic();
     setTimeout(topPic('https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png'),100);
-    setTimeout(topRest, 3000);
+    setTimeout(topRest, 2000);
 }
 
 function topBlock(){

@@ -79,3 +79,8 @@ body{
     margin-right: auto;
     text-align: center;
 }
+
+.stats{
+    width: 20px;
+    height:20px;
+}
