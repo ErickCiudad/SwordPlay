@@ -68,6 +68,157 @@ if (topStam >= 5) {
     document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
     document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
 
+    if (topHealth === 9) {
+        document.getElementById('topHeart10').style.display = 'none';
+    }
+    if (topHealth === 8) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+    }
+    if (topHealth === 7) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+    }
+    if (topHealth === 6) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+    }
+    if (topHealth === 5) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+        document.getElementById('topHeart6').style.display = 'none';
+    }
+    if (topHealth === 4) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+        document.getElementById('topHeart6').style.display = 'none';
+        document.getElementById('topHeart5').style.display = 'none';
+    }
+    if (topHealth === 3) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+        document.getElementById('topHeart6').style.display = 'none';
+        document.getElementById('topHeart5').style.display = 'none';
+        document.getElementById('topHeart4').style.display = 'none';
+    }
+    if (topHealth === 2) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+        document.getElementById('topHeart6').style.display = 'none';
+        document.getElementById('topHeart5').style.display = 'none';
+        document.getElementById('topHeart4').style.display = 'none';
+        document.getElementById('topHeart3').style.display = 'none';
+    }
+    if (topHealth === 1) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+        document.getElementById('topHeart6').style.display = 'none';
+        document.getElementById('topHeart5').style.display = 'none';
+        document.getElementById('topHeart4').style.display = 'none';
+        document.getElementById('topHeart3').style.display = 'none';
+        document.getElementById('topHeart2').style.display = 'none';
+    }
+    if (topHealth <= 0) {
+        document.getElementById('topHeart10').style.display = 'none';
+        document.getElementById('topHeart9').style.display = 'none';
+        document.getElementById('topHeart8').style.display = 'none';
+        document.getElementById('topHeart7').style.display = 'none';
+        document.getElementById('topHeart6').style.display = 'none';
+        document.getElementById('topHeart5').style.display = 'none';
+        document.getElementById('topHeart4').style.display = 'none';
+        document.getElementById('topHeart3').style.display = 'none';
+        document.getElementById('topHeart2').style.display = 'none';
+        document.getElementById('topHeart1').style.display = 'none';
+    }
+
+    if (botHealth === 9) {
+        document.getElementById('botHeart10').style.display = 'none';
+    }
+    if (botHealth === 8) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+    }
+    if (botHealth === 7) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+    }
+    if (botHealth === 6) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+    }
+    if (botHealth === 5) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+        document.getElementById('botHeart6').style.display = 'none';
+    }
+    if (botHealth === 4) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+        document.getElementById('botHeart6').style.display = 'none';
+        document.getElementById('botHeart5').style.display = 'none';
+    }
+    if (botHealth === 3) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+        document.getElementById('botHeart6').style.display = 'none';
+        document.getElementById('botHeart5').style.display = 'none';
+        document.getElementById('botHeart4').style.display = 'none';
+    }
+    if (botHealth === 2) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+        document.getElementById('botHeart6').style.display = 'none';
+        document.getElementById('botHeart5').style.display = 'none';
+        document.getElementById('botHeart4').style.display = 'none';
+        document.getElementById('botHeart3').style.display = 'none';
+    }
+    if (botHealth === 1) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+        document.getElementById('botHeart6').style.display = 'none';
+        document.getElementById('botHeart5').style.display = 'none';
+        document.getElementById('botHeart4').style.display = 'none';
+        document.getElementById('botHeart3').style.display = 'none';
+        document.getElementById('botHeart2').style.display = 'none';
+    }
+    if (botHealth <= 0) {
+        document.getElementById('botHeart10').style.display = 'none';
+        document.getElementById('botHeart9').style.display = 'none';
+        document.getElementById('botHeart8').style.display = 'none';
+        document.getElementById('botHeart7').style.display = 'none';
+        document.getElementById('botHeart6').style.display = 'none';
+        document.getElementById('botHeart5').style.display = 'none';
+        document.getElementById('botHeart4').style.display = 'none';
+        document.getElementById('botHeart3').style.display = 'none';
+        document.getElementById('botHeart2').style.display = 'none';
+        document.getElementById('botHeart1').style.display = 'none';
+    }
+
 }
 
 setInterval(autoClick, 100);
@@ -155,7 +306,7 @@ function botChargedUp (){
     botReplacePic();
     setTimeout(botPic('http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg'),100);
     //Charged up
-    setTimeout(botPowerAttack, 800);
+    setTimeout(botPowerAttack, 500);
 }
 
 function botPowerAttack() {
@@ -397,7 +548,7 @@ function topChargedUp (){
     topReplacePic();
     setTimeout(topPic('http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg'),100);
     //Charged up
-    setTimeout(topPowerAttack, 800);
+    setTimeout(topPowerAttack, 500);
 }
 
 function topPowerAttack() {
