@@ -52,7 +52,7 @@ function autoClick(){
 
     botStam+=botStamPS;}
 
-    document.getElementById("botStam").innerHTML= botStam.toFixed(0);
+    //document.getElementById("botStam").innerHTML= botStam.toFixed(0);
     if (botStam >= 5) {
         botStam = 5;
     }
@@ -60,13 +60,26 @@ function autoClick(){
     if (topStatus === 'resting'){
 
     topStam+=topStamPS;}
-document.getElementById("topStam").innerHTML= topStam.toFixed(0);
+//document.getElementById("topStam").innerHTML= topStam.toFixed(0);
 if (topStam >= 5) {
     topStam = 5;
 }
 
-    document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
-    document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
+    //document.getElementById("botHealth").innerHTML= botHealth.toFixed(0);
+    //document.getElementById("topHealth").innerHTML= topHealth.toFixed(0);
+
+    if (topHealth === 10) {
+        document.getElementById('topHeart10').style.display = 'block';
+        document.getElementById('topHeart9').style.display = 'block';
+        document.getElementById('topHeart8').style.display = 'block';
+        document.getElementById('topHeart7').style.display = 'block';
+        document.getElementById('topHeart6').style.display = 'block';
+        document.getElementById('topHeart5').style.display = 'block';
+        document.getElementById('topHeart4').style.display = 'block';
+        document.getElementById('topHeart3').style.display = 'block';
+        document.getElementById('topHeart2').style.display = 'block';
+        document.getElementById('topHeart1').style.display = 'block';
+    }
 
     if (topHealth === 9) {
         document.getElementById('topHeart10').style.display = 'none';
@@ -144,6 +157,19 @@ if (topStam >= 5) {
         document.getElementById('topHeart1').style.display = 'none';
     }
 
+    if (botHealth === 10) {
+        document.getElementById('botHeart10').style.display = 'block';
+        document.getElementById('botHeart9').style.display = 'block';
+        document.getElementById('botHeart8').style.display = 'block';
+        document.getElementById('botHeart7').style.display = 'block';
+        document.getElementById('botHeart6').style.display = 'block';
+        document.getElementById('botHeart5').style.display = 'block';
+        document.getElementById('botHeart4').style.display = 'block';
+        document.getElementById('botHeart3').style.display = 'block';
+        document.getElementById('botHeart2').style.display = 'block';
+        document.getElementById('botHeart1').style.display = 'block';
+    }
+
     if (botHealth === 9) {
         document.getElementById('botHeart10').style.display = 'none';
     }
@@ -217,6 +243,103 @@ if (topStam >= 5) {
         document.getElementById('botHeart3').style.display = 'none';
         document.getElementById('botHeart2').style.display = 'none';
         document.getElementById('botHeart1').style.display = 'none';
+    }
+
+    if (topStam === 5) {
+        document.getElementById('topStam5').style.display = 'block';
+        document.getElementById('topStam4').style.display = 'block';
+        document.getElementById('topStam3').style.display = 'block';
+        document.getElementById('topStam2').style.display = 'block';
+        document.getElementById('topStam1').style.display = 'block';
+    }
+
+
+    else if (topStam >= 4) {
+        document.getElementById('topStam5').style.display = 'none';
+        document.getElementById('topStam4').style.display = 'block';
+        document.getElementById('topStam3').style.display = 'block';
+        document.getElementById('topStam2').style.display = 'block';
+        document.getElementById('topStam1').style.display = 'block';
+    }
+
+    else if (topStam >= 3) {
+        document.getElementById('topStam5').style.display = 'none';
+        document.getElementById('topStam4').style.display = 'none';
+        document.getElementById('topStam3').style.display = 'block';
+        document.getElementById('topStam2').style.display = 'block';
+        document.getElementById('topStam1').style.display = 'block';
+    }
+
+    else if (topStam >= 2) {
+        document.getElementById('topStam5').style.display = 'none';
+        document.getElementById('topStam4').style.display = 'none';
+        document.getElementById('topStam3').style.display = 'none';
+        document.getElementById('topStam2').style.display = 'block';
+        document.getElementById('topStam1').style.display = 'block';
+    }
+
+    else if (topStam >= 1) {
+        document.getElementById('topStam5').style.display = 'none';
+        document.getElementById('topStam4').style.display = 'none';
+        document.getElementById('topStam3').style.display = 'none';
+        document.getElementById('topStam2').style.display = 'none';
+        document.getElementById('topStam1').style.display = 'block';
+    }
+
+    else if (topStam >= 0) {
+        document.getElementById('topStam5').style.display = 'none';
+        document.getElementById('topStam4').style.display = 'none';
+        document.getElementById('topStam3').style.display = 'none';
+        document.getElementById('topStam2').style.display = 'none';
+        document.getElementById('topStam1').style.display = 'none';
+    }
+
+    if (botStam === 5) {
+        document.getElementById('botStam5').style.display = 'block';
+        document.getElementById('botStam4').style.display = 'block';
+        document.getElementById('botStam3').style.display = 'block';
+        document.getElementById('botStam2').style.display = 'block';
+        document.getElementById('botStam1').style.display = 'block';
+    }
+
+    else if (botStam >= 4) {
+        document.getElementById('botStam5').style.display = 'none';
+        document.getElementById('botStam4').style.display = 'block';
+        document.getElementById('botStam3').style.display = 'block';
+        document.getElementById('botStam2').style.display = 'block';
+        document.getElementById('botStam1').style.display = 'block';
+    }
+
+    else if (botStam >= 3) {
+        document.getElementById('botStam5').style.display = 'none';
+        document.getElementById('botStam4').style.display = 'none';
+        document.getElementById('botStam3').style.display = 'block';
+        document.getElementById('botStam2').style.display = 'block';
+        document.getElementById('botStam1').style.display = 'block';
+    }
+
+    else if (botStam >= 2) {
+        document.getElementById('botStam5').style.display = 'none';
+        document.getElementById('botStam4').style.display = 'none';
+        document.getElementById('botStam3').style.display = 'none';
+        document.getElementById('botStam2').style.display = 'block';
+        document.getElementById('botStam1').style.display = 'block';
+    }
+
+    else if (botStam >= 1) {
+        document.getElementById('botStam5').style.display = 'none';
+        document.getElementById('botStam4').style.display = 'none';
+        document.getElementById('botStam3').style.display = 'none';
+        document.getElementById('botStam2').style.display = 'none';
+        document.getElementById('botStam1').style.display = 'block';
+    }
+
+    else if (botStam >= 0) {
+        document.getElementById('botStam5').style.display = 'none';
+        document.getElementById('botStam4').style.display = 'none';
+        document.getElementById('botStam3').style.display = 'none';
+        document.getElementById('botStam2').style.display = 'none';
+        document.getElementById('botStam1').style.display = 'none';
     }
 
 }
