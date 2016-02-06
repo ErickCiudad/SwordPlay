@@ -436,6 +436,9 @@ function botPowerAttack() {
     if (botStatus === 'attacking') {
 
     }
+    if (botStatus === 'resting'){
+
+    }
     else {
         botStatus = 'attacking';
         botReplacePic();
@@ -496,7 +499,7 @@ function botParry() {
     if (botStam < 2) {
 
     }
-    else {
+     else if (botStatus === 'resting') {
         botStatus = 'parrying';
         botReplacePic();
         setTimeout(botPic('http://vignette1.wikia.nocookie.net/marvelcinematicuniverse/images/a/ac/CAShieldvsMjonir-TheAvengers.png/revision/latest?cb=20141020151051'), 100);
@@ -514,7 +517,6 @@ function botRest (){
 
 function botStun () {
     botStatus = 'stunned';
-    botStam = 0;
     botReplacePic();
     setTimeout(botPic('https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png'),100);
     setTimeout(botRest, 2000);
@@ -678,6 +680,9 @@ function topPowerAttack() {
     if (topStatus === 'attacking') {
 
     }
+    if (topStatus === 'resting'){
+
+    }
     else {
         topStatus = 'attacking';
         topReplacePic();
@@ -738,7 +743,7 @@ function topParry() {
     if (topStam < 2) {
 
     }
-    else {
+    else if (topStatus === 'resting'){
         topStatus = 'parrying';
         topReplacePic();
         setTimeout(topPic('http://vignette1.wikia.nocookie.net/marvelcinematicuniverse/images/a/ac/CAShieldvsMjonir-TheAvengers.png/revision/latest?cb=20141020151051'), 100);
@@ -756,7 +761,6 @@ function topRest (){
 
 function topStun () {
     topStatus = 'stunned';
-    topStam = 0;
     topReplacePic();
     setTimeout(topPic('https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png'),100);
     setTimeout(topRest, 2000);
