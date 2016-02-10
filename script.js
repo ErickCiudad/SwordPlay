@@ -523,7 +523,7 @@ function botStun () {
 }
     document.onkeydown = checkKey;
 
-function checkKey(e, b, u, te, tb, tu, p, tp, tc) {
+function checkKey(e, b, u, te, tb, tu, p, tp, tc, to) {
 
     e = e || window.event;
     b = b || window.event;
@@ -533,6 +533,8 @@ function checkKey(e, b, u, te, tb, tu, p, tp, tc) {
     tb = tb || window.event;
     tu = tu || window.event;
     tp = tp || window.event;
+    t0 = to || window.event;
+
 
     if (e.keyCode == '38') {
         // up arrow
@@ -571,7 +573,10 @@ function checkKey(e, b, u, te, tb, tu, p, tp, tc) {
         topChargedUp();
         //D
     }
-
+    else if (to.keyCode == 'make this q') {
+        // down arrow
+        botBlock();
+    }
 
 }
 
@@ -775,6 +780,21 @@ function topBlock(){
     topReplacePic();
     setTimeout(topPic('http://thumb7.shutterstock.com/display_pic_with_logo/92657/92657,1251642732,11/stock-photo-man-trying-to-protect-himself-with-his-arms-36161041.jpg'), 100)
 }
+
+function topBackAway(){
+    if (topStatus === 'away'){
+
+    }
+    if (topStatus === 'resting') {
+        setTimeout(topBackOff, 500);
+        function topBackOff() {
+
+            topStatus = 'away';
+            topReplacePic();
+            topPic('https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif');
+        }
+    }
+}
 /*attack doesn't run if stamina is empty
 * if your attacking, you're status is set and stamina recovery is stopped
 * if you have attacked, you lose one stamina point and your enemy loses one health point.
@@ -796,6 +816,7 @@ function topBlock(){
 //Pain   //    http://ranchopalosverdesdentist.com/wp-content/uploads/tmj-top.jpg
 //Stunned// https://pbs.twimg.com/profile_images/378800000227860824/609c0452349405f0d1133c4d484f8a91_400x400.png
 //Charged Up// http://www.etonline.com/news/2015/10/24187336/set_drake_hotling_bling_video-640.jpg
+//Back Away// https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif
 
 //Parry// http://vignette1.wikia.nocookie.net/marvelcinematicuniverse/images/a/ac/CAShieldvsMjonir-TheAvengers.png/revision/latest?cb=20141020151051
 
